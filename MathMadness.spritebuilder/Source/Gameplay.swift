@@ -21,6 +21,11 @@ class Gameplay: CCNode {
     weak var topGrid: Grid!
     var topTiles: [Tile] = []
     
+    weak var grayOut: CCNodeColor!
+    weak var bottomWinLabel: CCLabelTTF!
+    weak var topWinLabel: CCLabelTTF!
+    weak var playAgain: CCButton!
+    
     weak var world: CCNode!
     
     weak var topEquation, bottomEquation: CCLabelTTF!
@@ -58,7 +63,7 @@ class Gameplay: CCNode {
         
         bottomTargetNumber = bottomGrid.generateNewRound()
         topTargetNumber = topGrid.generateNewRound()
-//        generateNewRound()
+
         countdownBeforeGameBegins()
     }
     
@@ -268,30 +273,51 @@ extension Gameplay: GridDelegate {
         if winner == .Top {
             topGrid.removeAllTiles()
             topGrid.increaseScore()
+            topChosenSet.removeAll()
             if topGrid.puzzlesRemaining == 0 {
                 gameEnd(.Top)
             }
             else {
                 delay(0.5) {
-                    topGrid.generateNewRound()
+                    self.topTargetNumber = self.topGrid.generateNewRound()
+                    self.topEquation.string = ""
                 }
             }
         }
         else if winner == .Bottom {
             bottomGrid.removeAllTiles()
             bottomGrid.increaseScore()
+            bottomChosenSet.removeAll()
             if bottomGrid.puzzlesRemaining == 0 {
                 gameEnd(.Bottom)
             }
             else {
                 delay(0.5) {
-                    bottomGrid.generateNewRound()
+                    self.bottomTargetNumber = self.bottomGrid.generateNewRound()
+                    self.bottomEquation.string = ""
                 }
             }
         }
     }
     
     func gameEnd(winner: Side) {
+        userInteractionEnabled = false
+        multipleTouchEnabled = false
         
+        if winner == .Top {
+            bottomGrid.breakTiles()
+            bottomWinLabel.string = "you lose."
+        }
+        else {
+            topGrid.breakTiles()
+            topWinLabel.string = "you lose."
+        }
+        delay(1) {
+            self.playAgain.position = ccp(0.5, 0.5)
+            self.grayOut.runAction(CCActionFadeTo(duration: 0.5, opacity: 0.6))
+            self.playAgain.runAction(CCActionFadeTo(duration: 0.5, opacity: 1))
+            self.bottomWinLabel.runAction(CCActionFadeTo(duration: 0.5, opacity: 1))
+            self.topWinLabel.runAction(CCActionFadeTo(duration: 0.5, opacity: 1))
+        }
     }
 }

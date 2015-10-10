@@ -241,6 +241,31 @@ class Grid: CCNode {
     func solve() {
         delegate?.solve(side)
     }
+    
+    func breakTiles() {
+        self.delay(0.07) {
+            AudioServicesPlayAlertSound(UInt32(kSystemSoundID_Vibrate))
+        }
+        
+        for tile in tiles {
+            var random = Int(arc4random_uniform(9))
+            let negativeRandom = Int(arc4random_uniform(2))
+            
+            random = random * 4
+            
+            if random == 0 {
+                random = 30
+            }
+            
+            if negativeRandom != 0 {
+                random = -random
+            }
+            
+            let tiltAction = CCActionEaseElasticOut(action: CCActionRotateBy(duration: 0.5, angle: Float(random)))
+            
+            tile.runAction(tiltAction)
+        }
+    }
 }
 
 extension Grid: TileDelegate {
