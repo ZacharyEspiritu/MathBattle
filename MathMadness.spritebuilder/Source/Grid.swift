@@ -12,12 +12,14 @@ class Grid: CCNode {
     
     weak var a1, a2, a3, a4: CCNode!
     weak var b1, b2, b3, b4: CCNode!
-    weak var c1, c2, c3, c4: CCNode!
+    weak var c1, c2, c3: CCNode!
     
     var tiles: [Tile] = []
     var numbers: Int = 0
     var operators: Int = 0
     var side: Side = .Top
+    
+    var delegate: GridDelegate?
     
     func spawnNewTiles() {
         for index in 0..<12 {
@@ -26,6 +28,8 @@ class Grid: CCNode {
             
             tiles.append(newTile)
             newTile.position = ccp(0, 0)
+            
+            newTile.delegate = self
             
             if newTile.randomize(side, currentNumbers: numbers, currentOperators: operators) {
                 operators++
@@ -57,13 +61,25 @@ class Grid: CCNode {
                 c2.addChild(newTile)
             case 10:
                 c3.addChild(newTile)
-            case 11:
-                c4.addChild(newTile)
             default:
                 print("test")
             }
         }
-        
     }
     
+    func clear() {
+        delegate?.clear(side)
+    }
+}
+
+extension Grid: TileDelegate {
+    
+    func tileWasPressed(value: Values, side: Side, tile: Tile) {
+        delegate?.tilePressed(value, side: side, tile: tile)
+    }
+}
+
+protocol GridDelegate {
+    func tilePressed(value: Values, side: Side, tile: Tile)
+    func clear(side: Side)
 }

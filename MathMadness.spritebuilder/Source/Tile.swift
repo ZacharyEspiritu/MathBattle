@@ -8,8 +8,23 @@
 
 import Foundation
 
-enum Values {
-    case one, two, three, four, five, six, seven, eight, nine, ten, eleven, twelve, add, subtract, multiply, divide
+enum Values: String {
+    case one = "1"
+    case two = "2"
+    case three = "3"
+    case four = "4"
+    case five = "5"
+    case six = "6"
+    case seven = "7"
+    case eight = "8"
+    case nine = "9"
+    case ten = "10"
+    case eleven = "11"
+    case twelve = "12"
+    case add = "+"
+    case subtract = "-"
+    case multiply = "×"
+    case divide = "÷"
 }
 enum Side: String {
     case Top = "Top"
@@ -23,6 +38,8 @@ class Tile: CCNode {
     
     var value: Values = .one
     var side: Side = .Top
+    
+    var delegate: TileDelegate?
     
     func randomize(side: Side, currentNumbers: Int, currentOperators: Int) -> Bool {
         let rand = CCRANDOM_0_1()
@@ -102,8 +119,15 @@ class Tile: CCNode {
     }
     
     func pressed() {
+        delegate?.tileWasPressed(value, side: side, tile: self)
         print(label.string)
         print(side.rawValue)
     }
+    
+}
+
+protocol TileDelegate {
+    
+    func tileWasPressed(value: Values, side: Side, tile: Tile)
     
 }
