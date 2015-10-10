@@ -10,7 +10,7 @@ import Foundation
 
 enum Operation: String {
     case Add = " + "
-    case Subtract = " - "
+    case Subtract = " – "
     case Multiply = " × "
 }
 
@@ -151,6 +151,7 @@ extension Gameplay: GridDelegate {
     }
     
     func solve(side: Side) {
+        
         if side == .Bottom {
             if bottomChosenSet.count == 9 {
                 if bottomChosenSet[0].rawValue >= 0 && bottomChosenSet[2].rawValue >= 0 && bottomChosenSet[4].rawValue >= 0 && bottomChosenSet[6].rawValue >= 0 && bottomChosenSet[8].rawValue >= 0 && bottomChosenSet[1].rawValue < 0 && bottomChosenSet[3].rawValue < 0 && bottomChosenSet[5].rawValue < 0 && bottomChosenSet[7].rawValue < 0 {
@@ -270,6 +271,11 @@ extension Gameplay: GridDelegate {
     }
     
     func completedPuzzle(winner: Side) {
+        
+        delay(0.07) {
+            AudioServicesPlayAlertSound(UInt32(kSystemSoundID_Vibrate))
+        }
+        
         if winner == .Top {
             topGrid.removeAllTiles()
             topGrid.increaseScore()

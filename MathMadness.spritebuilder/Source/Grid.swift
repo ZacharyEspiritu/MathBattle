@@ -146,7 +146,7 @@ class Grid: CCNode {
                 newTile.value = .nine
             case " + ":
                 newTile.value = .add
-            case " - ":
+            case " – ":
                 newTile.value = .subtract
             case " × ":
                 newTile.value = .multiply

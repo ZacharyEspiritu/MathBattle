@@ -85,8 +85,8 @@
 										<string>Position</string>
 										<key>value</key>
 										<array>
-											<real>43</real>
-											<real>5</real>
+											<real>34.400001525878906</real>
+											<real>3.9999990463256836</real>
 											<integer>0</integer>
 											<integer>0</integer>
 											<integer>0</integer>
@@ -110,8 +110,8 @@
 										<string>ScaleLock</string>
 										<key>value</key>
 										<array>
-											<real>1</real>
-											<real>1</real>
+											<real>0.80000001192092896</real>
+											<real>0.80000001192092896</real>
 											<true/>
 											<integer>0</integer>
 										</array>
@@ -311,8 +311,8 @@
 								<string>ScaleLock</string>
 								<key>value</key>
 								<array>
-									<real>0.80000001192092896</real>
-									<real>0.80000001192092896</real>
+									<real>1</real>
+									<real>1</real>
 									<true/>
 									<integer>0</integer>
 								</array>
@@ -325,7 +325,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>assets/button.png</string>
+									<string>assets/Rectangle 1 Copy + Rectangle 1.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -1155,7 +1155,7 @@ left</string>
 									<real>0.0</real>
 									<real>0.0</real>
 									<real>0.0</real>
-									<real>0.0</real>
+									<real>1</real>
 								</array>
 							</dict>
 							<dict>
@@ -1165,7 +1165,7 @@ left</string>
 								<string>FloatScale</string>
 								<key>value</key>
 								<array>
-									<real>1</real>
+									<real>4</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -1179,7 +1179,7 @@ left</string>
 									<real>0.0</real>
 									<real>0.0</real>
 									<real>0.0</real>
-									<real>0.0</real>
+									<real>1</real>
 								</array>
 							</dict>
 							<dict>
@@ -1189,7 +1189,7 @@ left</string>
 								<string>FloatScale</string>
 								<key>value</key>
 								<array>
-									<real>0.0</real>
+									<real>2</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -1208,8 +1208,6 @@ left</string>
 								</array>
 							</dict>
 						</array>
-						<key>selected</key>
-						<true/>
 					</dict>
 				</array>
 				<key>customClass</key>
@@ -1941,8 +1939,8 @@ left</string>
 										<string>Position</string>
 										<key>value</key>
 										<array>
-											<real>43</real>
-											<real>8</real>
+											<real>34.400001525878906</real>
+											<real>3.9999990463256836</real>
 											<integer>0</integer>
 											<integer>0</integer>
 											<integer>0</integer>
@@ -1966,8 +1964,8 @@ left</string>
 										<string>ScaleLock</string>
 										<key>value</key>
 										<array>
-											<real>1</real>
-											<real>1</real>
+											<real>0.80000001192092896</real>
+											<real>0.80000001192092896</real>
 											<true/>
 											<integer>0</integer>
 										</array>
@@ -2167,8 +2165,8 @@ left</string>
 								<string>ScaleLock</string>
 								<key>value</key>
 								<array>
-									<real>0.80000001192092896</real>
-									<real>0.80000001192092896</real>
+									<real>1</real>
+									<real>1</real>
 									<true/>
 									<integer>0</integer>
 								</array>
@@ -2181,7 +2179,7 @@ left</string>
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>assets/button.png</string>
+									<string>assets/Rectangle 1 Copy + Rectangle 1.png</string>
 								</array>
 							</dict>
 							<dict>
