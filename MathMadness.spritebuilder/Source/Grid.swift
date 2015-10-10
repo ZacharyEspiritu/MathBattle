@@ -56,10 +56,8 @@ class Grid: CCNode {
             case 7:
                 b4.addChild(newTile)
             case 8:
-                c1.addChild(newTile)
-            case 9:
                 c2.addChild(newTile)
-            case 10:
+            case 9:
                 c3.addChild(newTile)
             default:
                 print("test")
@@ -69,6 +67,14 @@ class Grid: CCNode {
     
     func clear() {
         delegate?.clear(side)
+        for tile in tiles {
+            tile.button.enabled = true
+            tile.color = CCColor(red: 255/255, green: 255/255, blue: 255/255)
+        }
+    }
+    
+    func solve() {
+        delegate?.solve(side)
     }
 }
 
@@ -82,4 +88,5 @@ extension Grid: TileDelegate {
 protocol GridDelegate {
     func tilePressed(value: Values, side: Side, tile: Tile)
     func clear(side: Side)
+    func solve(side: Side)
 }

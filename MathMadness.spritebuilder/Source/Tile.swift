@@ -122,6 +122,10 @@ class Tile: CCNode {
         delegate?.tileWasPressed(value, side: side, tile: self)
         print(label.string)
         print(side.rawValue)
+        
+        self.button.enabled = false
+        self.cascadeColorEnabled = true
+        self.color = CCColor(red: 52/255, green: 52/255, blue: 52/255)
     }
     
 }

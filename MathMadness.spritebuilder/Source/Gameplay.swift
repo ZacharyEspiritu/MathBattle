@@ -8,6 +8,10 @@
 
 import Foundation
 
+enum Operation {
+    case Add, Subtract, Multiply
+}
+
 class Gameplay: CCNode {
     
     weak var bottomGrid: Grid!
@@ -47,9 +51,73 @@ class Gameplay: CCNode {
     }
     
     func generateNewRound() {
-        let potentialTargetNumbers: [Int] = [1,2,3,4,5,6,7,8,9,10,11,12,14,15,16,18,20,21,22,24,25,26,27,28,30,32,33,34,35,36,38,40,42,44,45,46,48,50,52,54,55,56,58,60,62,63,64]
+        var targetNumber: Int = 0
         
-        let targetNumber = potentialTargetNumbers[Int(arc4random_uniform(UInt32(potentialTargetNumbers.count)))]
+        let firstNumber = Int(arc4random_uniform(UInt32(10)))
+        let secondNumber = Int(arc4random_uniform(UInt32(10)))
+        
+        let rand = CCRANDOM_0_1()
+        var firstOperation: Operation!
+        if rand < 0.30 {
+            firstOperation = .Multiply
+            targetNumber = firstNumber * secondNumber
+        }
+        else if rand < 0.65 {
+            firstOperation = .Add
+            targetNumber = firstNumber + secondNumber
+        }
+        else {
+            firstOperation = .Subtract
+            targetNumber = firstNumber - secondNumber
+        }
+        
+        let thirdNumber = Int(arc4random_uniform(UInt32(10)))
+        let rand2 = CCRANDOM_0_1()
+        var secondOperation: Operation!
+        if rand2 < 0.30 {
+            secondOperation = .Multiply
+            targetNumber = targetNumber * thirdNumber
+        }
+        else if rand2 < 0.65 {
+            secondOperation = .Add
+            targetNumber = targetNumber + thirdNumber
+        }
+        else {
+            secondOperation = .Subtract
+            targetNumber = targetNumber - thirdNumber
+        }
+        
+        let fourthNumber = Int(arc4random_uniform(UInt32(10)))
+        let rand3 = CCRANDOM_0_1()
+        var thirdOperation: Operation!
+        if rand3 < 0.30 {
+            thirdOperation = .Multiply
+            targetNumber = targetNumber * fourthNumber
+        }
+        else if rand3 < 0.65 {
+            thirdOperation = .Add
+            targetNumber = targetNumber + fourthNumber
+        }
+        else {
+            thirdOperation = .Subtract
+            targetNumber = targetNumber - fourthNumber
+        }
+        
+        let fifthNumber = Int(arc4random_uniform(UInt32(10)))
+        let rand4 = CCRANDOM_0_1()
+        var fourthOperation: Operation!
+        if rand4 < 0.30 {
+            fourthOperation = .Multiply
+            targetNumber = targetNumber * fifthNumber
+        }
+        else if rand4 < 0.65 {
+            fourthOperation = .Add
+            targetNumber = targetNumber + fifthNumber
+        }
+        else {
+            fourthOperation = .Subtract
+            targetNumber = targetNumber - fifthNumber
+        }
     }
     
     func countdownBeforeGameBegins() {
@@ -121,6 +189,15 @@ extension Gameplay: GridDelegate {
         else {
             topChosenSet.removeAll()
             topEquation.string = ""
+        }
+    }
+    
+    func solve(side: Side) {
+        if side == .Bottom {
+            
+        }
+        else {
+            
         }
     }
 }
