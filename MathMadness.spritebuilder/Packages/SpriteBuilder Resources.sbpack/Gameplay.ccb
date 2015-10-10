@@ -10,13 +10,13 @@
 		<false/>
 	</dict>
 	<key>UUID</key>
-	<integer>51</integer>
+	<integer>54</integer>
 	<key>centeredOrigin</key>
 	<false/>
 	<key>currentResolution</key>
 	<integer>0</integer>
 	<key>currentSequenceId</key>
-	<integer>0</integer>
+	<integer>1</integer>
 	<key>docDimensionsType</key>
 	<integer>0</integer>
 	<key>fileType</key>
@@ -229,6 +229,113 @@
 							<false/>
 							<integer>0</integer>
 						</array>
+					</dict>
+				</array>
+			</dict>
+			<dict>
+				<key>UUID</key>
+				<integer>53</integer>
+				<key>baseClass</key>
+				<string>CCNodeColor</string>
+				<key>children</key>
+				<array/>
+				<key>customClass</key>
+				<string></string>
+				<key>displayName</key>
+				<string>CCNodeColor</string>
+				<key>memberVarAssignmentName</key>
+				<string></string>
+				<key>memberVarAssignmentType</key>
+				<integer>1</integer>
+				<key>properties</key>
+				<array>
+					<dict>
+						<key>name</key>
+						<string>name</string>
+						<key>type</key>
+						<string>StringSimple</string>
+						<key>value</key>
+						<string></string>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>position</string>
+						<key>type</key>
+						<string>Position</string>
+						<key>value</key>
+						<array>
+							<real>68.307952880859375</real>
+							<real>174.5484619140625</real>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>0</integer>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>contentSize</string>
+						<key>type</key>
+						<string>Size</string>
+						<key>value</key>
+						<array>
+							<real>1</real>
+							<real>7</real>
+							<integer>2</integer>
+							<integer>0</integer>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>anchorPoint</string>
+						<key>type</key>
+						<string>Point</string>
+						<key>value</key>
+						<array>
+							<real>0.0</real>
+							<real>0.0</real>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>scale</string>
+						<key>type</key>
+						<string>ScaleLock</string>
+						<key>value</key>
+						<array>
+							<real>1</real>
+							<real>1</real>
+							<false/>
+							<integer>0</integer>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>rotation</string>
+						<key>type</key>
+						<string>Degrees</string>
+						<key>value</key>
+						<real>-50</real>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>color</string>
+						<key>type</key>
+						<string>Color3</string>
+						<key>value</key>
+						<array>
+							<real>0.0</real>
+							<real>0.0</real>
+							<real>0.0</real>
+							<real>1</real>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>opacity</string>
+						<key>type</key>
+						<string>Float</string>
+						<key>value</key>
+						<real>1</real>
 					</dict>
 				</array>
 			</dict>
@@ -627,7 +734,7 @@
 						<key>value</key>
 						<array>
 							<real>160</real>
-							<real>-300</real>
+							<real>12</real>
 							<integer>0</integer>
 							<integer>0</integer>
 							<integer>0</integer>
@@ -748,7 +855,7 @@
 						<key>value</key>
 						<array>
 							<real>160</real>
-							<real>-300</real>
+							<real>12</real>
 							<integer>1</integer>
 							<integer>0</integer>
 							<integer>0</integer>
@@ -876,7 +983,7 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>-82</real>
+							<real>82.5</real>
 							<real>268.63467407226562</real>
 							<integer>2</integer>
 							<integer>0</integer>
@@ -924,7 +1031,7 @@
 						<key>type</key>
 						<string>FontTTF</string>
 						<key>value</key>
-						<string>HelveticaNeue-Bold</string>
+						<string>assets/Game of Three.ttf</string>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -933,7 +1040,7 @@
 						<string>FloatScale</string>
 						<key>value</key>
 						<array>
-							<real>60</real>
+							<real>56</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -952,8 +1059,8 @@
 						<string>Size</string>
 						<key>value</key>
 						<array>
-							<real>0.0</real>
-							<real>0.0</real>
+							<real>150</real>
+							<real>80</real>
 							<integer>0</integer>
 							<integer>0</integer>
 						</array>
@@ -964,7 +1071,7 @@
 						<key>type</key>
 						<string>IntegerLabeled</string>
 						<key>value</key>
-						<integer>0</integer>
+						<integer>1</integer>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -972,7 +1079,7 @@
 						<key>type</key>
 						<string>IntegerLabeled</string>
 						<key>value</key>
-						<integer>0</integer>
+						<integer>1</integer>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -997,7 +1104,7 @@
 							<real>0.0</real>
 							<real>0.0</real>
 							<real>0.0</real>
-							<real>0.0</real>
+							<real>1</real>
 						</array>
 					</dict>
 					<dict>
@@ -1007,7 +1114,7 @@
 						<string>FloatScale</string>
 						<key>value</key>
 						<array>
-							<real>1</real>
+							<real>5</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -1518,8 +1625,8 @@
 									<integer>3</integer>
 									<key>value</key>
 									<array>
-										<real>82</real>
-										<real>300.2769775390625</real>
+										<real>75.000007629394531</real>
+										<real>298.63470458984375</real>
 									</array>
 								</dict>
 							</array>
@@ -1564,8 +1671,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>-82</real>
-							<real>300.2769775390625</real>
+							<real>75.000007629394531</real>
+							<real>298.63470458984375</real>
 							<integer>1</integer>
 							<integer>0</integer>
 							<integer>0</integer>
@@ -1620,7 +1727,7 @@
 						<key>type</key>
 						<string>FontTTF</string>
 						<key>value</key>
-						<string>HelveticaNeue-Bold</string>
+						<string>assets/Game of Three.ttf</string>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -1629,7 +1736,7 @@
 						<string>FloatScale</string>
 						<key>value</key>
 						<array>
-							<real>60</real>
+							<real>56</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -1639,7 +1746,7 @@
 						<key>type</key>
 						<string>Check</string>
 						<key>value</key>
-						<false/>
+						<true/>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -1648,8 +1755,8 @@
 						<string>Size</string>
 						<key>value</key>
 						<array>
-							<real>0.0</real>
-							<real>0.0</real>
+							<real>150</real>
+							<real>80</real>
 							<integer>0</integer>
 							<integer>0</integer>
 						</array>
@@ -1660,7 +1767,7 @@
 						<key>type</key>
 						<string>IntegerLabeled</string>
 						<key>value</key>
-						<integer>0</integer>
+						<integer>1</integer>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -1668,7 +1775,7 @@
 						<key>type</key>
 						<string>IntegerLabeled</string>
 						<key>value</key>
-						<integer>0</integer>
+						<integer>1</integer>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -1693,7 +1800,7 @@
 							<real>0.0</real>
 							<real>0.0</real>
 							<real>0.0</real>
-							<real>0.0</real>
+							<real>1</real>
 						</array>
 					</dict>
 					<dict>
@@ -1703,7 +1810,7 @@
 						<string>FloatScale</string>
 						<key>value</key>
 						<array>
-							<real>1</real>
+							<real>5</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -1829,7 +1936,7 @@
 						<key>type</key>
 						<string>FontTTF</string>
 						<key>value</key>
-						<string>HelveticaNeue-Bold</string>
+						<string>assets/Game of Three.ttf</string>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -1902,7 +2009,7 @@
 							<real>0.0</real>
 							<real>0.0</real>
 							<real>0.0</real>
-							<real>0.0</real>
+							<real>1</real>
 						</array>
 					</dict>
 					<dict>
@@ -1912,7 +2019,7 @@
 						<string>FloatScale</string>
 						<key>value</key>
 						<array>
-							<real>1</real>
+							<real>4</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -2044,7 +2151,7 @@
 						<key>type</key>
 						<string>FontTTF</string>
 						<key>value</key>
-						<string>HelveticaNeue-Bold</string>
+						<string>assets/Game of Three.ttf</string>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -2117,7 +2224,7 @@
 							<real>0.0</real>
 							<real>0.0</real>
 							<real>0.0</real>
-							<real>0.0</real>
+							<real>1</real>
 						</array>
 					</dict>
 					<dict>
@@ -2127,7 +2234,7 @@
 						<string>FloatScale</string>
 						<key>value</key>
 						<array>
-							<real>1</real>
+							<real>4</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -2182,6 +2289,8 @@
 				<string></string>
 				<key>displayName</key>
 				<string>CCNodeColor</string>
+				<key>hidden</key>
+				<true/>
 				<key>memberVarAssignmentName</key>
 				<string>grayOut</string>
 				<key>memberVarAssignmentType</key>
@@ -2281,6 +2390,8 @@
 				<string></string>
 				<key>displayName</key>
 				<string>CCLabelTTF</string>
+				<key>hidden</key>
+				<true/>
 				<key>memberVarAssignmentName</key>
 				<string>bottomWinLabel</string>
 				<key>memberVarAssignmentType</key>
@@ -2350,7 +2461,7 @@
 						<key>type</key>
 						<string>FontTTF</string>
 						<key>value</key>
-						<string>HelveticaNeue-Bold</string>
+						<string>assets/Game of Three.ttf</string>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -2444,7 +2555,7 @@
 							<real>0.0</real>
 							<real>0.0</real>
 							<real>0.0</real>
-							<real>0.0</real>
+							<real>1</real>
 						</array>
 					</dict>
 					<dict>
@@ -2454,7 +2565,7 @@
 						<string>FloatScale</string>
 						<key>value</key>
 						<array>
-							<real>1</real>
+							<real>4</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -2509,6 +2620,8 @@
 				<string></string>
 				<key>displayName</key>
 				<string>CCLabelTTF</string>
+				<key>hidden</key>
+				<true/>
 				<key>memberVarAssignmentName</key>
 				<string>topWinLabel</string>
 				<key>memberVarAssignmentType</key>
@@ -2586,7 +2699,7 @@
 						<key>type</key>
 						<string>FontTTF</string>
 						<key>value</key>
-						<string>HelveticaNeue-Bold</string>
+						<string>assets/Game of Three.ttf</string>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -2680,7 +2793,7 @@
 							<real>0.0</real>
 							<real>0.0</real>
 							<real>0.0</real>
-							<real>0.0</real>
+							<real>1</real>
 						</array>
 					</dict>
 					<dict>
@@ -2690,7 +2803,7 @@
 						<string>FloatScale</string>
 						<key>value</key>
 						<array>
-							<real>1</real>
+							<real>4</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -2745,6 +2858,8 @@
 				<string></string>
 				<key>displayName</key>
 				<string>CCButton</string>
+				<key>hidden</key>
+				<true/>
 				<key>memberVarAssignmentName</key>
 				<string>playAgain</string>
 				<key>memberVarAssignmentType</key>
@@ -3059,8 +3174,204 @@
 						</array>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
+			</dict>
+			<dict>
+				<key>UUID</key>
+				<integer>51</integer>
+				<key>baseClass</key>
+				<string>CCNodeColor</string>
+				<key>children</key>
+				<array/>
+				<key>customClass</key>
+				<string></string>
+				<key>displayName</key>
+				<string>CCNodeColor</string>
+				<key>memberVarAssignmentName</key>
+				<string></string>
+				<key>memberVarAssignmentType</key>
+				<integer>1</integer>
+				<key>properties</key>
+				<array>
+					<dict>
+						<key>name</key>
+						<string>name</string>
+						<key>type</key>
+						<string>StringSimple</string>
+						<key>value</key>
+						<string></string>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>position</string>
+						<key>type</key>
+						<string>Position</string>
+						<key>value</key>
+						<array>
+							<real>0.0</real>
+							<real>326.900146484375</real>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>0</integer>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>contentSize</string>
+						<key>type</key>
+						<string>Size</string>
+						<key>value</key>
+						<array>
+							<real>1</real>
+							<real>7</real>
+							<integer>2</integer>
+							<integer>0</integer>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>anchorPoint</string>
+						<key>type</key>
+						<string>Point</string>
+						<key>value</key>
+						<array>
+							<real>0.0</real>
+							<real>0.0</real>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>scale</string>
+						<key>type</key>
+						<string>ScaleLock</string>
+						<key>value</key>
+						<array>
+							<real>1</real>
+							<real>1</real>
+							<false/>
+							<integer>0</integer>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>color</string>
+						<key>type</key>
+						<string>Color3</string>
+						<key>value</key>
+						<array>
+							<real>0.0</real>
+							<real>0.0</real>
+							<real>0.0</real>
+							<real>1</real>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>opacity</string>
+						<key>type</key>
+						<string>Float</string>
+						<key>value</key>
+						<real>1</real>
+					</dict>
+				</array>
+			</dict>
+			<dict>
+				<key>UUID</key>
+				<integer>52</integer>
+				<key>baseClass</key>
+				<string>CCNodeColor</string>
+				<key>children</key>
+				<array/>
+				<key>customClass</key>
+				<string></string>
+				<key>displayName</key>
+				<string>CCNodeColor</string>
+				<key>memberVarAssignmentName</key>
+				<string></string>
+				<key>memberVarAssignmentType</key>
+				<integer>1</integer>
+				<key>properties</key>
+				<array>
+					<dict>
+						<key>name</key>
+						<string>name</string>
+						<key>type</key>
+						<string>StringSimple</string>
+						<key>value</key>
+						<string></string>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>position</string>
+						<key>type</key>
+						<string>Position</string>
+						<key>value</key>
+						<array>
+							<real>0.0</real>
+							<real>234.02151489257812</real>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>0</integer>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>contentSize</string>
+						<key>type</key>
+						<string>Size</string>
+						<key>value</key>
+						<array>
+							<real>1</real>
+							<real>7</real>
+							<integer>2</integer>
+							<integer>0</integer>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>anchorPoint</string>
+						<key>type</key>
+						<string>Point</string>
+						<key>value</key>
+						<array>
+							<real>0.0</real>
+							<real>0.0</real>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>scale</string>
+						<key>type</key>
+						<string>ScaleLock</string>
+						<key>value</key>
+						<array>
+							<real>1</real>
+							<real>1</real>
+							<false/>
+							<integer>0</integer>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>color</string>
+						<key>type</key>
+						<string>Color3</string>
+						<key>value</key>
+						<array>
+							<real>0.0</real>
+							<real>0.0</real>
+							<real>0.0</real>
+							<real>1</real>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>opacity</string>
+						<key>type</key>
+						<string>Float</string>
+						<key>value</key>
+						<real>1</real>
+					</dict>
+				</array>
 			</dict>
 		</array>
 		<key>customClass</key>
@@ -3238,7 +3549,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>0.3333333432674408</real>
+			<real>0.86666667461395264</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>
