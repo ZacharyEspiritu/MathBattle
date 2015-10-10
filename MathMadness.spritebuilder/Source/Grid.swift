@@ -12,35 +12,152 @@ class Grid: CCNode {
     
     weak var a1, a2, a3, a4: CCNode!
     weak var b1, b2, b3, b4: CCNode!
-    weak var c1, c2, c3: CCNode!
+    weak var c1, c2, c3, c4: CCNode!
     
     var tiles: [Tile] = []
     var numbers: Int = 0
     var operators: Int = 0
     var side: Side = .Top
     
+    weak var scoreLabel: CCLabelTTF!
+    var puzzlesRemaining: Int = 5 {
+        didSet {
+            scoreLabel.string = "\(puzzlesRemaining)\nleft"
+        }
+    }
+    
     var delegate: GridDelegate?
     
-    func spawnNewTiles() {
-        for index in 0..<12 {
-            
+    func generateNewRound() -> Int {
+        var targetNumber: Int = 0
+        
+        let firstNumber = Int(arc4random_uniform(UInt32(10)))
+        let secondNumber = Int(arc4random_uniform(UInt32(10)))
+        
+        let rand = CCRANDOM_0_1()
+        var firstOperation: Operation!
+        if rand < 0.30 {
+            firstOperation = .Multiply
+            targetNumber = firstNumber * secondNumber
+        }
+        else if rand < 0.65 {
+            firstOperation = .Add
+            targetNumber = firstNumber + secondNumber
+        }
+        else {
+            firstOperation = .Subtract
+            targetNumber = firstNumber - secondNumber
+        }
+        
+        let thirdNumber = Int(arc4random_uniform(UInt32(10)))
+        let rand2 = CCRANDOM_0_1()
+        var secondOperation: Operation!
+        if rand2 < 0.30 {
+            secondOperation = .Multiply
+            targetNumber = targetNumber * thirdNumber
+        }
+        else if rand2 < 0.65 {
+            secondOperation = .Add
+            targetNumber = targetNumber + thirdNumber
+        }
+        else {
+            secondOperation = .Subtract
+            targetNumber = targetNumber - thirdNumber
+        }
+        
+        let fourthNumber = Int(arc4random_uniform(UInt32(10)))
+        let rand3 = CCRANDOM_0_1()
+        var thirdOperation: Operation!
+        if rand3 < 0.30 {
+            thirdOperation = .Multiply
+            targetNumber = targetNumber * fourthNumber
+        }
+        else if rand3 < 0.65 {
+            thirdOperation = .Add
+            targetNumber = targetNumber + fourthNumber
+        }
+        else {
+            thirdOperation = .Subtract
+            targetNumber = targetNumber - fourthNumber
+        }
+        
+        let fifthNumber = Int(arc4random_uniform(UInt32(10)))
+        let rand4 = CCRANDOM_0_1()
+        var fourthOperation: Operation!
+        if rand4 < 0.30 {
+            fourthOperation = .Multiply
+            targetNumber = targetNumber * fifthNumber
+        }
+        else if rand4 < 0.65 {
+            fourthOperation = .Add
+            targetNumber = targetNumber + fifthNumber
+        }
+        else {
+            fourthOperation = .Subtract
+            targetNumber = targetNumber - fifthNumber
+        }
+        
+        print("\(firstNumber)\(firstOperation.rawValue)\(secondNumber)\(secondOperation.rawValue)\(thirdNumber)\(thirdOperation.rawValue)\(fourthNumber)\(fourthOperation.rawValue)\(fifthNumber) = \(targetNumber)")
+        
+        var array: [String] = []
+        array.append("\(firstNumber)")
+        array.append("\(firstOperation.rawValue)")
+        array.append("\(secondNumber)")
+        array.append("\(secondOperation.rawValue)")
+        array.append("\(thirdNumber)")
+        array.append("\(thirdOperation.rawValue)")
+        array.append("\(fourthNumber)")
+        array.append("\(fourthOperation.rawValue)")
+        array.append("\(fifthNumber)")
+        
+        for index in 0..<9 {
             let newTile: Tile = CCBReader.load("Tile") as! Tile
             
             tiles.append(newTile)
             newTile.position = ccp(0, 0)
             
             newTile.delegate = self
+            newTile.side = side
             
-            if newTile.randomize(side, currentNumbers: numbers, currentOperators: operators) {
-                operators++
+            let stringIndex = Int(arc4random_uniform(UInt32(array.count)))
+            
+            newTile.label.string = array[stringIndex]
+            
+            switch array[stringIndex] {
+            case "0":
+                newTile.value = .zero
+            case "1":
+                newTile.value = .one
+            case "2":
+                newTile.value = .two
+            case "3":
+                newTile.value = .three
+            case "4":
+                newTile.value = .four
+            case "5":
+                newTile.value = .five
+            case "6":
+                newTile.value = .six
+            case "7":
+                newTile.value = .seven
+            case "8":
+                newTile.value = .eight
+            case "9":
+                newTile.value = .nine
+            case " + ":
+                newTile.value = .add
+            case " - ":
+                newTile.value = .subtract
+            case " × ":
+                newTile.value = .multiply
+            default:
+                break
             }
-            else {
-                numbers++
-            }
+            array.removeAtIndex(stringIndex)
             
             switch index {
             case 0:
-                a1.addChild(newTile)
+                c4.addChild(newTile)
             case 1:
                 a2.addChild(newTile)
             case 2:
@@ -48,7 +165,7 @@ class Grid: CCNode {
             case 3:
                 a4.addChild(newTile)
             case 4:
-                b1.addChild(newTile)
+                c3.addChild(newTile)
             case 5:
                 b2.addChild(newTile)
             case 6:
@@ -57,12 +174,60 @@ class Grid: CCNode {
                 b4.addChild(newTile)
             case 8:
                 c2.addChild(newTile)
-            case 9:
-                c3.addChild(newTile)
             default:
                 print("test")
             }
+            
+            newTile.scale = 0
+            newTile.runAction(CCActionScaleTo(duration: 0.25, scale: 1))
         }
+        
+        return targetNumber
+    }
+    
+    func removeAllTiles() {
+        for tile in tiles {
+            tile.runAction(CCActionEaseSineIn(action: CCActionScaleTo(duration: 0.25, scale: 0)))
+        }
+        delay(0.3) {
+            for index in 0..<9 {
+                switch index {
+                case 0:
+                    self.c4.removeAllChildren()
+                case 1:
+                    self.a2.removeAllChildren()
+                case 2:
+                    self.a3.removeAllChildren()
+                case 3:
+                    self.a4.removeAllChildren()
+                case 4:
+                    self.c3.removeAllChildren()
+                case 5:
+                    self.b2.removeAllChildren()
+                case 6:
+                    self.b3.removeAllChildren()
+                case 7:
+                    self.b4.removeAllChildren()
+                case 8:
+                    self.c2.removeAllChildren()
+                default:
+                    print("test")
+                }
+            }
+        }
+    }
+    
+    func increaseScore() {
+        puzzlesRemaining--
+    }
+    
+    func delay(delay:Double, closure:()->()) {
+        dispatch_after(
+            dispatch_time(
+                DISPATCH_TIME_NOW,
+                Int64(delay * Double(NSEC_PER_SEC))
+            ),
+            dispatch_get_main_queue(), closure)
     }
     
     func clear() {
@@ -80,13 +245,13 @@ class Grid: CCNode {
 
 extension Grid: TileDelegate {
     
-    func tileWasPressed(value: Values, side: Side, tile: Tile) {
-        delegate?.tilePressed(value, side: side, tile: tile)
+    func tileWasPressed(string: String, side: Side, tile: Tile) {
+        delegate?.tilePressed(string, side: side, tile: tile)
     }
 }
 
 protocol GridDelegate {
-    func tilePressed(value: Values, side: Side, tile: Tile)
+    func tilePressed(string: String, side: Side, tile: Tile)
     func clear(side: Side)
     func solve(side: Side)
 }

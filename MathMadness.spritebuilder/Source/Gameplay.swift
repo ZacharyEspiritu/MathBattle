@@ -8,8 +8,10 @@
 
 import Foundation
 
-enum Operation {
-    case Add, Subtract, Multiply
+enum Operation: String {
+    case Add = " + "
+    case Subtract = " - "
+    case Multiply = " × "
 }
 
 class Gameplay: CCNode {
@@ -24,6 +26,16 @@ class Gameplay: CCNode {
     weak var topEquation, bottomEquation: CCLabelTTF!
     var topChosenSet: [Values] = []
     weak var topTarget, bottomTarget: CCLabelTTF!
+    var topTargetNumber: Int = 0 {
+        didSet {
+            topTarget.string = "\(topTargetNumber)"
+        }
+    }
+    var bottomTargetNumber: Int = 0 {
+        didSet {
+            bottomTarget.string = "\(bottomTargetNumber)"
+        }
+    }
     var bottomChosenSet: [Values] = []
     
     weak var topCountdown, bottomCountdown: CCLabelTTF!
@@ -44,80 +56,10 @@ class Gameplay: CCNode {
         bottomGrid.delegate = self
         topGrid.delegate = self
         
-        bottomGrid.spawnNewTiles()
-        topGrid.spawnNewTiles()
-        
+        bottomTargetNumber = bottomGrid.generateNewRound()
+        topTargetNumber = topGrid.generateNewRound()
+//        generateNewRound()
         countdownBeforeGameBegins()
-    }
-    
-    func generateNewRound() {
-        var targetNumber: Int = 0
-        
-        let firstNumber = Int(arc4random_uniform(UInt32(10)))
-        let secondNumber = Int(arc4random_uniform(UInt32(10)))
-        
-        let rand = CCRANDOM_0_1()
-        var firstOperation: Operation!
-        if rand < 0.30 {
-            firstOperation = .Multiply
-            targetNumber = firstNumber * secondNumber
-        }
-        else if rand < 0.65 {
-            firstOperation = .Add
-            targetNumber = firstNumber + secondNumber
-        }
-        else {
-            firstOperation = .Subtract
-            targetNumber = firstNumber - secondNumber
-        }
-        
-        let thirdNumber = Int(arc4random_uniform(UInt32(10)))
-        let rand2 = CCRANDOM_0_1()
-        var secondOperation: Operation!
-        if rand2 < 0.30 {
-            secondOperation = .Multiply
-            targetNumber = targetNumber * thirdNumber
-        }
-        else if rand2 < 0.65 {
-            secondOperation = .Add
-            targetNumber = targetNumber + thirdNumber
-        }
-        else {
-            secondOperation = .Subtract
-            targetNumber = targetNumber - thirdNumber
-        }
-        
-        let fourthNumber = Int(arc4random_uniform(UInt32(10)))
-        let rand3 = CCRANDOM_0_1()
-        var thirdOperation: Operation!
-        if rand3 < 0.30 {
-            thirdOperation = .Multiply
-            targetNumber = targetNumber * fourthNumber
-        }
-        else if rand3 < 0.65 {
-            thirdOperation = .Add
-            targetNumber = targetNumber + fourthNumber
-        }
-        else {
-            thirdOperation = .Subtract
-            targetNumber = targetNumber - fourthNumber
-        }
-        
-        let fifthNumber = Int(arc4random_uniform(UInt32(10)))
-        let rand4 = CCRANDOM_0_1()
-        var fourthOperation: Operation!
-        if rand4 < 0.30 {
-            fourthOperation = .Multiply
-            targetNumber = targetNumber * fifthNumber
-        }
-        else if rand4 < 0.65 {
-            fourthOperation = .Add
-            targetNumber = targetNumber + fifthNumber
-        }
-        else {
-            fourthOperation = .Subtract
-            targetNumber = targetNumber - fifthNumber
-        }
     }
     
     func countdownBeforeGameBegins() {
@@ -132,6 +74,7 @@ class Gameplay: CCNode {
                 self.delay(1) {
                     self.countdown = "1"
                     self.delay(1) {
+                        self.animationManager.runAnimationsForSequenceNamed("GameStart")
                         // Enable user interaction on "GO!".
                         self.countdown = "GO!"
                         self.userInteractionEnabled = true
@@ -160,23 +103,33 @@ class Gameplay: CCNode {
 
 extension Gameplay: GridDelegate {
     
-    func tilePressed(value: Values, side: Side, tile: Tile) {
+    func tilePressed(string: String, side: Side, tile: Tile) {
         if side == .Bottom {
-            bottomChosenSet.append(value)
+            bottomChosenSet.append(tile.value)
             if bottomEquation.string == nil {
-                bottomEquation.string = "\(value.rawValue)"
+                bottomEquation.string = "\(string)"
             }
             else {
-                bottomEquation.string = "\(bottomEquation.string) \(value.rawValue)"
+                if bottomChosenSet.count == 3 || bottomChosenSet.count == 5 || bottomChosenSet.count == 7 {
+                    bottomEquation.string = "(\(bottomEquation.string)\(string))"
+                }
+                else {
+                    bottomEquation.string = "\(bottomEquation.string)\(string)"
+                }
             }
         }
         else {
-            topChosenSet.append(value)
+            topChosenSet.append(tile.value)
             if topEquation.string == nil {
-                topEquation.string = "\(value.rawValue)"
+                topEquation.string = "\(string)"
             }
             else {
-                topEquation.string = "\(topEquation.string) \(value.rawValue)"
+                if topChosenSet.count == 3 || topChosenSet.count == 5 || topChosenSet.count == 7 {
+                    topEquation.string = "(\(topEquation.string)\(string))"
+                }
+                else {
+                    topEquation.string = "\(topEquation.string)\(string)"
+                }
             }
         }
     }
@@ -194,10 +147,151 @@ extension Gameplay: GridDelegate {
     
     func solve(side: Side) {
         if side == .Bottom {
-            
+            if bottomChosenSet.count == 9 {
+                if bottomChosenSet[0].rawValue >= 0 && bottomChosenSet[2].rawValue >= 0 && bottomChosenSet[4].rawValue >= 0 && bottomChosenSet[6].rawValue >= 0 && bottomChosenSet[8].rawValue >= 0 && bottomChosenSet[1].rawValue < 0 && bottomChosenSet[3].rawValue < 0 && bottomChosenSet[5].rawValue < 0 && bottomChosenSet[7].rawValue < 0 {
+                    print("valid")
+                    
+                    var supposedTarget = bottomChosenSet[0].rawValue
+                    switch bottomChosenSet[1].rawValue {
+                    case -1:
+                        supposedTarget += bottomChosenSet[2].rawValue
+                    case -2:
+                        supposedTarget -= bottomChosenSet[2].rawValue
+                    case -3:
+                        supposedTarget *= bottomChosenSet[2].rawValue
+                    default: break
+                    }
+                    switch bottomChosenSet[3].rawValue {
+                    case -1:
+                        supposedTarget += bottomChosenSet[4].rawValue
+                    case -2:
+                        supposedTarget -= bottomChosenSet[4].rawValue
+                    case -3:
+                        supposedTarget *= bottomChosenSet[4].rawValue
+                    default: break
+                    }
+                    switch bottomChosenSet[5].rawValue {
+                    case -1:
+                        supposedTarget += bottomChosenSet[6].rawValue
+                    case -2:
+                        supposedTarget -= bottomChosenSet[6].rawValue
+                    case -3:
+                        supposedTarget *= bottomChosenSet[6].rawValue
+                    default: break
+                    }
+                    switch bottomChosenSet[7].rawValue {
+                    case -1:
+                        supposedTarget += bottomChosenSet[8].rawValue
+                    case -2:
+                        supposedTarget -= bottomChosenSet[8].rawValue
+                    case -3:
+                        supposedTarget *= bottomChosenSet[8].rawValue
+                    default: break
+                    }
+                    
+                    if supposedTarget == bottomTargetNumber {
+                        completedPuzzle(.Bottom)
+                    }
+                    else {
+                        bottomGrid.animationManager.runAnimationsForSequenceNamed("Incorrect")
+                    }
+                }
+                else {
+                    bottomGrid.animationManager.runAnimationsForSequenceNamed("Incorrect")
+                }
+            }
+            else {
+                bottomGrid.animationManager.runAnimationsForSequenceNamed("Incorrect")
+            }
         }
         else {
-            
+            if topChosenSet.count == 9 {
+                if topChosenSet[0].rawValue >= 0 && topChosenSet[2].rawValue >= 0 && topChosenSet[4].rawValue >= 0 && topChosenSet[6].rawValue >= 0 && topChosenSet[8].rawValue >= 0 && topChosenSet[1].rawValue < 0 && topChosenSet[3].rawValue < 0 && topChosenSet[5].rawValue < 0 && topChosenSet[7].rawValue < 0 {
+                    print("valid")
+                    
+                    var supposedTarget = topChosenSet[0].rawValue
+                    switch topChosenSet[1].rawValue {
+                    case -1:
+                        supposedTarget += topChosenSet[2].rawValue
+                    case -2:
+                        supposedTarget -= topChosenSet[2].rawValue
+                    case -3:
+                        supposedTarget *= topChosenSet[2].rawValue
+                    default: break
+                    }
+                    switch topChosenSet[3].rawValue {
+                    case -1:
+                        supposedTarget += topChosenSet[4].rawValue
+                    case -2:
+                        supposedTarget -= topChosenSet[4].rawValue
+                    case -3:
+                        supposedTarget *= topChosenSet[4].rawValue
+                    default: break
+                    }
+                    switch topChosenSet[5].rawValue {
+                    case -1:
+                        supposedTarget += topChosenSet[6].rawValue
+                    case -2:
+                        supposedTarget -= topChosenSet[6].rawValue
+                    case -3:
+                        supposedTarget *= topChosenSet[6].rawValue
+                    default: break
+                    }
+                    switch topChosenSet[7].rawValue {
+                    case -1:
+                        supposedTarget += topChosenSet[8].rawValue
+                    case -2:
+                        supposedTarget -= topChosenSet[8].rawValue
+                    case -3:
+                        supposedTarget *= topChosenSet[8].rawValue
+                    default: break
+                    }
+                    
+                    if supposedTarget == topTargetNumber {
+                        completedPuzzle(.Top)
+                    }
+                    else {
+                        topGrid.animationManager.runAnimationsForSequenceNamed("Incorrect")
+                    }
+                }
+                else {
+                    topGrid.animationManager.runAnimationsForSequenceNamed("Incorrect")
+                }
+            }
+            else {
+                topGrid.animationManager.runAnimationsForSequenceNamed("Incorrect")
+            }
         }
+    }
+    
+    func completedPuzzle(winner: Side) {
+        if winner == .Top {
+            topGrid.removeAllTiles()
+            topGrid.increaseScore()
+            if topGrid.puzzlesRemaining == 0 {
+                gameEnd(.Top)
+            }
+            else {
+                delay(0.5) {
+                    topGrid.generateNewRound()
+                }
+            }
+        }
+        else if winner == .Bottom {
+            bottomGrid.removeAllTiles()
+            bottomGrid.increaseScore()
+            if bottomGrid.puzzlesRemaining == 0 {
+                gameEnd(.Bottom)
+            }
+            else {
+                delay(0.5) {
+                    bottomGrid.generateNewRound()
+                }
+            }
+        }
+    }
+    
+    func gameEnd(winner: Side) {
+        
     }
 }
