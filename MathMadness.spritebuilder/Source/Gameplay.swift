@@ -21,6 +21,18 @@ class Gameplay: CCNode {
     weak var topGrid: Grid!
     var topTiles: [Tile] = []
     
+    weak var topLosingEquation, bottomLosingEquation: CCLabelTTF!
+    var currentTopEquationSolution: String = "" {
+        didSet {
+            topLosingEquation.string = currentTopEquationSolution
+        }
+    }
+    var currentBottomEquationSolution: String = "" {
+        didSet {
+            bottomLosingEquation.string = currentBottomEquationSolution
+        }
+    }
+    
     weak var grayOut: CCNodeColor!
     weak var bottomWinLabel: CCLabelTTF!
     weak var topWinLabel: CCLabelTTF!
@@ -107,6 +119,15 @@ class Gameplay: CCNode {
 }
 
 extension Gameplay: GridDelegate {
+    
+    func saveStringEquationSolution(stringToSave: String, side: Side) {
+        if side == .Bottom {
+            currentBottomEquationSolution = stringToSave
+        }
+        else {
+            currentTopEquationSolution = stringToSave
+        }
+    }
     
     func tilePressed(string: String, side: Side, tile: Tile) {
         if side == .Bottom {
@@ -313,10 +334,14 @@ extension Gameplay: GridDelegate {
         if winner == .Top {
             bottomGrid.breakTiles()
             bottomWinLabel.string = "you lose."
+            bottomLosingEquation.string = currentBottomEquationSolution
+            topLosingEquation.string = ""
         }
         else {
             topGrid.breakTiles()
             topWinLabel.string = "you lose."
+            topLosingEquation.string = currentTopEquationSolution
+            bottomLosingEquation.string = ""
         }
         delay(1) {
             self.playAgain.position = ccp(0.5, 0.5)
@@ -324,7 +349,11 @@ extension Gameplay: GridDelegate {
             self.playAgain.runAction(CCActionFadeTo(duration: 0.5, opacity: 1))
             self.bottomWinLabel.runAction(CCActionFadeTo(duration: 0.5, opacity: 1))
             self.topWinLabel.runAction(CCActionFadeTo(duration: 0.5, opacity: 1))
+            self.topLosingEquation.runAction(CCActionFadeTo(duration: 0.5, opacity: 1))
+            self.bottomLosingEquation.runAction(CCActionFadeTo(duration: 0.5, opacity: 1))
         }
+        print(currentBottomEquationSolution)
+        print(currentTopEquationSolution)
     }
     
     func again() {

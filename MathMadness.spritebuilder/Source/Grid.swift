@@ -20,7 +20,7 @@ class Grid: CCNode {
     var side: Side = .Top
     
     weak var scoreLabel: CCLabelTTF!
-    var puzzlesRemaining: Int = 5 {
+    var puzzlesRemaining: Int = 1 {
         didSet {
             scoreLabel.string = "\(puzzlesRemaining)\nleft"
         }
@@ -98,6 +98,7 @@ class Grid: CCNode {
         }
         
         print("\(firstNumber)\(firstOperation.rawValue)\(secondNumber)\(secondOperation.rawValue)\(thirdNumber)\(thirdOperation.rawValue)\(fourthNumber)\(fourthOperation.rawValue)\(fifthNumber) = \(targetNumber)")
+        delegate?.saveStringEquationSolution("(((\(firstNumber)\(firstOperation.rawValue)\(secondNumber))\(secondOperation.rawValue)\(thirdNumber))\(thirdOperation.rawValue)\(fourthNumber))\(fourthOperation.rawValue)\(fifthNumber) = \(targetNumber)", side: side)
         
         var array: [String] = []
         array.append("\(firstNumber)")
@@ -279,4 +280,5 @@ protocol GridDelegate {
     func tilePressed(string: String, side: Side, tile: Tile)
     func clear(side: Side)
     func solve(side: Side)
+    func saveStringEquationSolution(stringToSave: String, side: Side)
 }

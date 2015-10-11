@@ -3,7 +3,7 @@ import Foundation
 class MainScene: CCNode {
     
     func didLoadFromCCB() {
-        
+        OALSimpleAudio.sharedInstance().playBg("Rhinoceros.mp3", loop: true)
     }
     
     func play() {

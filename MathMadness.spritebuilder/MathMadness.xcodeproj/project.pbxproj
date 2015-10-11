@@ -11,6 +11,7 @@
 		558B769A1BC9665F00875EC5 /* Tile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558B76991BC9665F00875EC5 /* Tile.swift */; settings = {ASSET_TAGS = (); }; };
 		558B769C1BC966A000875EC5 /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558B769B1BC966A000875EC5 /* Grid.swift */; settings = {ASSET_TAGS = (); }; };
 		558B76DA1BC9CBF800875EC5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 558B76D91BC9CBF800875EC5 /* Images.xcassets */; settings = {ASSET_TAGS = (); }; };
+		558B76DC1BC9DD8100875EC5 /* Rhinoceros.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 558B76DB1BC9DD8100875EC5 /* Rhinoceros.mp3 */; settings = {ASSET_TAGS = (); }; };
 		5B121030197484FA004C1E1D /* MathMadnessActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B12102F197484FA004C1E1D /* MathMadnessActivity.m */; };
 		5B121038197487F2004C1E1D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B737893E1807617C0076A88C /* AppDelegate.m */; };
 		7A046D7919E84ED5004C4763 /* MainScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A046D7519E84C36004C4763 /* MainScene.swift */; };
@@ -156,6 +157,7 @@
 		558B76991BC9665F00875EC5 /* Tile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Tile.swift; path = Source/Tile.swift; sourceTree = "<group>"; };
 		558B769B1BC966A000875EC5 /* Grid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Grid.swift; path = Source/Grid.swift; sourceTree = "<group>"; };
 		558B76D91BC9CBF800875EC5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		558B76DB1BC9DD8100875EC5 /* Rhinoceros.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Rhinoceros.mp3; sourceTree = "<group>"; };
 		5B12100919748273004C1E1D /* libEGL.so */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libEGL.so; path = /usr/lib/armv7a/libEGL.so; sourceTree = SDKROOT; };
 		5B12100F197483EE004C1E1D /* ic_launcher.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_launcher.png; sourceTree = "<group>"; };
 		5B121011197483EE004C1E1D /* ic_launcher.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_launcher.png; sourceTree = "<group>"; };
@@ -526,6 +528,7 @@
 		B77F1B4617B978D7009739AE /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				558B76DB1BC9DD8100875EC5 /* Rhinoceros.mp3 */,
 				558B76D91BC9CBF800875EC5 /* Images.xcassets */,
 				7A40366119DDF8C2007B6E8F /* Platforms */,
 				5B12100D197483EE004C1E1D /* res */,
@@ -753,6 +756,7 @@
 				B71F5918188484E7003F4D28 /* iPhone@2x.png in Resources */,
 				B7378977180762440076A88C /* Default.png in Resources */,
 				B71F5911188484E7003F4D28 /* iPad-old.png in Resources */,
+				558B76DC1BC9DD8100875EC5 /* Rhinoceros.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
