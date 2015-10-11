@@ -20,7 +20,7 @@ class Grid: CCNode {
     var side: Side = .Top
     
     weak var scoreLabel: CCLabelTTF!
-    var puzzlesRemaining: Int = 1 {
+    var puzzlesRemaining: Int = 5 {
         didSet {
             scoreLabel.string = "\(puzzlesRemaining)\nleft"
         }

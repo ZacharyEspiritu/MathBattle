@@ -2968,7 +2968,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>ccbResources/ccbButtonNormal.png</string>
+							<string></string>
 						</array>
 					</dict>
 					<dict>
@@ -2979,7 +2979,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>ccbResources/ccbButtonHighlighted.png</string>
+							<string>assets/button.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -3003,7 +3003,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>ccbResources/ccbButtonNormal.png</string>
+							<string></string>
 						</array>
 					</dict>
 					<dict>
@@ -3022,7 +3022,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>ccbResources/ccbButtonNormal.png</string>
+							<string></string>
 						</array>
 					</dict>
 					<dict>
@@ -3039,7 +3039,7 @@
 						<key>type</key>
 						<string>FontTTF</string>
 						<key>value</key>
-						<string>Helvetica</string>
+						<string>HelveticaNeue-Bold</string>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -3113,7 +3113,7 @@
 							<real>0.0</real>
 							<real>0.0</real>
 							<real>0.0</real>
-							<real>0.0</real>
+							<real>1</real>
 						</array>
 					</dict>
 					<dict>
@@ -3123,7 +3123,7 @@
 						<string>FloatScale</string>
 						<key>value</key>
 						<array>
-							<real>1</real>
+							<real>5</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -3147,7 +3147,7 @@
 						<string>FloatScale</string>
 						<key>value</key>
 						<array>
-							<real>2</real>
+							<real>10</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -3166,6 +3166,8 @@
 						</array>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 			<dict>
 				<key>UUID</key>
@@ -3596,7 +3598,7 @@
 						<key>value</key>
 						<array>
 							<real>0.5</real>
-							<real>186.93783569335938</real>
+							<real>169.93783569335938</real>
 							<integer>0</integer>
 							<integer>2</integer>
 							<integer>0</integer>
@@ -3643,7 +3645,7 @@
 						<key>type</key>
 						<string>FontTTF</string>
 						<key>value</key>
-						<string>assets/Game of Three.ttf</string>
+						<string>HelveticaNeue-Bold</string>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -3790,8 +3792,6 @@
 						</array>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 			<dict>
 				<key>UUID</key>
@@ -3826,7 +3826,7 @@
 						<key>value</key>
 						<array>
 							<real>0.5</real>
-							<real>379.93783569335938</real>
+							<real>396.93783569335938</real>
 							<integer>0</integer>
 							<integer>2</integer>
 							<integer>0</integer>
@@ -3881,7 +3881,7 @@
 						<key>type</key>
 						<string>FontTTF</string>
 						<key>value</key>
-						<string>assets/Game of Three.ttf</string>
+						<string>HelveticaNeue-Bold</string>
 					</dict>
 					<dict>
 						<key>name</key>
