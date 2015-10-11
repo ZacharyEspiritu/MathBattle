@@ -19,6 +19,8 @@ class Grid: CCNode {
     var operators: Int = 0
     var side: Side = .Top
     
+    var difficulty: Int = 10
+    
     weak var scoreLabel: CCLabelTTF!
     var puzzlesRemaining: Int = 5 {
         didSet {
@@ -31,8 +33,8 @@ class Grid: CCNode {
     func generateNewRound() -> Int {
         var targetNumber: Int = 0
         
-        let firstNumber = Int(arc4random_uniform(UInt32(10)))
-        let secondNumber = Int(arc4random_uniform(UInt32(10)))
+        let firstNumber = Int(arc4random_uniform(UInt32(difficulty)))
+        let secondNumber = Int(arc4random_uniform(UInt32(difficulty)))
         
         let rand = CCRANDOM_0_1()
         var firstOperation: Operation!

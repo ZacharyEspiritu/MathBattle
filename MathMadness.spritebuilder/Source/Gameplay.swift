@@ -73,6 +73,9 @@ class Gameplay: CCNode {
         bottomGrid.delegate = self
         topGrid.delegate = self
         
+        bottomGrid.difficulty = 10
+        topGrid.difficulty = 10
+        
         bottomTargetNumber = bottomGrid.generateNewRound()
         topTargetNumber = topGrid.generateNewRound()
 
