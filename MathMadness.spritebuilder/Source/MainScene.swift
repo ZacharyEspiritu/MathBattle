@@ -1,6 +1,16 @@
+//
+//  MainScene.swift
+//  MathMadness
+//
+//  Created by Zachary Espiritu on 10/10/15.
+//  Copyright © 2015 Zachary Espiritu. All rights reserved.
+//
+
 import Foundation
 
 class MainScene: CCNode {
+    
+    // MARK: Functions
     
     func didLoadFromCCB() {
         OALSimpleAudio.sharedInstance().playBg("Rhinoceros.mp3", loop: true)
@@ -15,5 +25,4 @@ class MainScene: CCNode {
         let transition = CCTransition(fadeWithDuration: 0.5)
         CCDirector.sharedDirector().presentScene(scene, withTransition: transition)
     }
-
 }

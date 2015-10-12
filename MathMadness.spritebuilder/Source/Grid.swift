@@ -3,12 +3,23 @@
 //  MathMadness
 //
 //  Created by Zachary Espiritu on 10/10/15.
-//  Copyright © 2015 Apportable. All rights reserved.
+//  Copyright © 2015 Zachary Espiritu. All rights reserved.
 //
 
 import Foundation
 
 class Grid: CCNode {
+    
+    // MARK: Pseudo-Constants
+    
+    var difficulty: Int = 10
+    var puzzlesRemaining: Int = 5 {
+        didSet {
+            scoreLabel.string = "\(puzzlesRemaining)\nleft"
+        }
+    }
+    
+    // MARK: Variables
     
     weak var a1, a2, a3, a4: CCNode!
     weak var b1, b2, b3, b4: CCNode!
@@ -19,16 +30,12 @@ class Grid: CCNode {
     var operators: Int = 0
     var side: Side = .Top
     
-    var difficulty: Int = 10
-    
     weak var scoreLabel: CCLabelTTF!
-    var puzzlesRemaining: Int = 5 {
-        didSet {
-            scoreLabel.string = "\(puzzlesRemaining)\nleft"
-        }
-    }
     
     var delegate: GridDelegate?
+    
+    
+    // MARK: Functions
     
     func generateNewRound() -> Int {
         var targetNumber: Int = 0
@@ -189,9 +196,11 @@ class Grid: CCNode {
     }
     
     func removeAllTiles() {
+        
         for tile in tiles {
             tile.runAction(CCActionEaseSineIn(action: CCActionScaleTo(duration: 0.25, scale: 0)))
         }
+        
         delay(0.3) {
             for index in 0..<9 {
                 switch index {
@@ -230,7 +239,7 @@ class Grid: CCNode {
                 DISPATCH_TIME_NOW,
                 Int64(delay * Double(NSEC_PER_SEC))
             ),
-            dispatch_get_main_queue(), closure)
+        dispatch_get_main_queue(), closure)
     }
     
     func clear() {
@@ -259,28 +268,19 @@ class Grid: CCNode {
             if random == 0 {
                 random = 30
             }
-            
             if negativeRandom != 0 {
                 random = -random
             }
             
             let tiltAction = CCActionEaseElasticOut(action: CCActionRotateBy(duration: 0.5, angle: Float(random)))
-            
             tile.runAction(tiltAction)
         }
     }
 }
 
+// MARK: TileDelegate Methods
 extension Grid: TileDelegate {
-    
     func tileWasPressed(string: String, side: Side, tile: Tile) {
         delegate?.tilePressed(string, side: side, tile: tile)
     }
-}
-
-protocol GridDelegate {
-    func tilePressed(string: String, side: Side, tile: Tile)
-    func clear(side: Side)
-    func solve(side: Side)
-    func saveStringEquationSolution(stringToSave: String, side: Side)
 }

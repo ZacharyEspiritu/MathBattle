@@ -3,57 +3,19 @@
 //  MathMadness
 //
 //  Created by Zachary Espiritu on 10/10/15.
-//  Copyright © 2015 Apportable. All rights reserved.
+//  Copyright © 2015 Zachary Espiritu. All rights reserved.
 //
 
 import Foundation
 
-enum Operation: String {
-    case Add = " + "
-    case Subtract = " – "
-    case Multiply = " × "
-}
-
 class Gameplay: CCNode {
     
-    weak var bottomGrid: Grid!
-    var bottomTiles: [Tile] = []
-    weak var topGrid: Grid!
-    var topTiles: [Tile] = []
-    
-    weak var topLosingEquation, bottomLosingEquation: CCLabelTTF!
-    var currentTopEquationSolution: String = "" {
-        didSet {
-            topLosingEquation.string = currentTopEquationSolution
-        }
-    }
-    var currentBottomEquationSolution: String = "" {
-        didSet {
-            bottomLosingEquation.string = currentBottomEquationSolution
-        }
-    }
-    
-    weak var grayOut: CCNodeColor!
-    weak var bottomWinLabel: CCLabelTTF!
-    weak var topWinLabel: CCLabelTTF!
-    weak var playAgain: CCButton!
+    // MARK: Neutral Variables
     
     weak var world: CCNode!
     
-    weak var topEquation, bottomEquation: CCLabelTTF!
-    var topChosenSet: [Values] = []
-    weak var topTarget, bottomTarget: CCLabelTTF!
-    var topTargetNumber: Int = 0 {
-        didSet {
-            topTarget.string = "\(topTargetNumber)"
-        }
-    }
-    var bottomTargetNumber: Int = 0 {
-        didSet {
-            bottomTarget.string = "\(bottomTargetNumber)"
-        }
-    }
-    var bottomChosenSet: [Values] = []
+    weak var grayOut: CCNodeColor!
+    weak var playAgain: CCButton!
     
     weak var topCountdown, bottomCountdown: CCLabelTTF!
     var countdown: String = "" {
@@ -62,6 +24,49 @@ class Gameplay: CCNode {
             bottomCountdown.string = countdown
         }
     }
+    
+    // MARK: Top Side Variables
+    
+    weak var topGrid:     Grid!
+    var topTiles:         [Tile] = []
+    var topChosenSet:     [Values] = []
+    weak var topEquation: CCLabelTTF!
+    weak var topWinLabel: CCLabelTTF!
+    weak var topTarget:   CCLabelTTF!
+    var topTargetNumber:  Int = 0 {
+        didSet {
+            topTarget.string = "\(topTargetNumber)"
+        }
+    }
+    weak var topLosingEquation: CCLabelTTF!
+    var currentTopEquationSolution: String = "" {
+        didSet {
+            topLosingEquation.string = currentTopEquationSolution
+        }
+    }
+    
+    // MARK: Bottom Side Variables
+    
+    weak var bottomGrid:     Grid!
+    var bottomTiles:         [Tile]   = []
+    var bottomChosenSet:     [Values] = []
+    weak var bottomEquation: CCLabelTTF!
+    weak var bottomWinLabel: CCLabelTTF!
+    weak var bottomTarget:   CCLabelTTF!
+    var bottomTargetNumber:  Int = 0 {
+        didSet {
+            bottomTarget.string = "\(bottomTargetNumber)"
+        }
+    }
+    weak var bottomLosingEquation: CCLabelTTF!
+    var currentBottomEquationSolution: String = "" {
+        didSet {
+            bottomLosingEquation.string = currentBottomEquationSolution
+        }
+    }
+    
+    
+    // MARK: Functions
     
     func didLoadFromCCB() {
         self.userInteractionEnabled = true
@@ -117,10 +122,90 @@ class Gameplay: CCNode {
                 DISPATCH_TIME_NOW,
                 Int64(delay * Double(NSEC_PER_SEC))
             ),
-            dispatch_get_main_queue(), closure)
+        dispatch_get_main_queue(), closure)
+    }
+    
+    func completedPuzzle(winner: Side) {
+        
+        delay(0.07) {
+            AudioServicesPlayAlertSound(UInt32(kSystemSoundID_Vibrate))
+        }
+        
+        if winner == .Top {
+            
+            topGrid.removeAllTiles()
+            topGrid.increaseScore()
+            topChosenSet.removeAll()
+            
+            if topGrid.puzzlesRemaining == 0 {
+                gameEnd(.Top)
+            }
+            else {
+                delay(0.5) {
+                    self.topTargetNumber = self.topGrid.generateNewRound()
+                    self.topEquation.string = ""
+                }
+            }
+        }
+        else if winner == .Bottom {
+            
+            bottomGrid.removeAllTiles()
+            bottomGrid.increaseScore()
+            bottomChosenSet.removeAll()
+            
+            if bottomGrid.puzzlesRemaining == 0 {
+                gameEnd(.Bottom)
+            }
+            else {
+                delay(0.5) {
+                    self.bottomTargetNumber = self.bottomGrid.generateNewRound()
+                    self.bottomEquation.string = ""
+                }
+            }
+        }
+    }
+    
+    func gameEnd(winner: Side) {
+        userInteractionEnabled = false
+        multipleTouchEnabled = false
+        
+        if winner == .Top {
+            bottomGrid.breakTiles()
+            bottomWinLabel.string = "you lose."
+            bottomLosingEquation.string = currentBottomEquationSolution
+            topLosingEquation.string = ""
+        }
+        else {
+            topGrid.breakTiles()
+            topWinLabel.string = "you lose."
+            topLosingEquation.string = currentTopEquationSolution
+            bottomLosingEquation.string = ""
+        }
+        delay(1) {
+            self.playAgain.position = ccp(0.5, 0.5)
+            self.grayOut.runAction(CCActionFadeTo(duration: 0.5, opacity: 0.6))
+            self.playAgain.runAction(CCActionFadeTo(duration: 0.5, opacity: 1))
+            self.bottomWinLabel.runAction(CCActionFadeTo(duration: 0.5, opacity: 1))
+            self.topWinLabel.runAction(CCActionFadeTo(duration: 0.5, opacity: 1))
+            self.topLosingEquation.runAction(CCActionFadeTo(duration: 0.5, opacity: 1))
+            self.bottomLosingEquation.runAction(CCActionFadeTo(duration: 0.5, opacity: 1))
+        }
+        print(currentBottomEquationSolution)
+        print(currentTopEquationSolution)
+    }
+    
+    func again() {
+        let gameplayScene = CCBReader.load("Gameplay") as! Gameplay
+        
+        let scene = CCScene()
+        scene.addChild(gameplayScene)
+        
+        let transition = CCTransition(fadeWithDuration: 0.5)
+        CCDirector.sharedDirector().presentScene(scene, withTransition: transition)
     }
 }
 
+// MARK: GridDelegate Methods
 extension Gameplay: GridDelegate {
     
     func saveStringEquationSolution(stringToSave: String, side: Side) {
@@ -175,7 +260,6 @@ extension Gameplay: GridDelegate {
     }
     
     func solve(side: Side) {
-        
         if side == .Bottom {
             if bottomChosenSet.count == 9 {
                 if bottomChosenSet[0].rawValue >= 0 && bottomChosenSet[2].rawValue >= 0 && bottomChosenSet[4].rawValue >= 0 && bottomChosenSet[6].rawValue >= 0 && bottomChosenSet[8].rawValue >= 0 && bottomChosenSet[1].rawValue < 0 && bottomChosenSet[3].rawValue < 0 && bottomChosenSet[5].rawValue < 0 && bottomChosenSet[7].rawValue < 0 {
@@ -293,80 +377,4 @@ extension Gameplay: GridDelegate {
             }
         }
     }
-    
-    func completedPuzzle(winner: Side) {
-        
-        delay(0.07) {
-            AudioServicesPlayAlertSound(UInt32(kSystemSoundID_Vibrate))
-        }
-        
-        if winner == .Top {
-            topGrid.removeAllTiles()
-            topGrid.increaseScore()
-            topChosenSet.removeAll()
-            if topGrid.puzzlesRemaining == 0 {
-                gameEnd(.Top)
-            }
-            else {
-                delay(0.5) {
-                    self.topTargetNumber = self.topGrid.generateNewRound()
-                    self.topEquation.string = ""
-                }
-            }
-        }
-        else if winner == .Bottom {
-            bottomGrid.removeAllTiles()
-            bottomGrid.increaseScore()
-            bottomChosenSet.removeAll()
-            if bottomGrid.puzzlesRemaining == 0 {
-                gameEnd(.Bottom)
-            }
-            else {
-                delay(0.5) {
-                    self.bottomTargetNumber = self.bottomGrid.generateNewRound()
-                    self.bottomEquation.string = ""
-                }
-            }
-        }
-    }
-    
-    func gameEnd(winner: Side) {
-        userInteractionEnabled = false
-        multipleTouchEnabled = false
-        
-        if winner == .Top {
-            bottomGrid.breakTiles()
-            bottomWinLabel.string = "you lose."
-            bottomLosingEquation.string = currentBottomEquationSolution
-            topLosingEquation.string = ""
-        }
-        else {
-            topGrid.breakTiles()
-            topWinLabel.string = "you lose."
-            topLosingEquation.string = currentTopEquationSolution
-            bottomLosingEquation.string = ""
-        }
-        delay(1) {
-            self.playAgain.position = ccp(0.5, 0.5)
-            self.grayOut.runAction(CCActionFadeTo(duration: 0.5, opacity: 0.6))
-            self.playAgain.runAction(CCActionFadeTo(duration: 0.5, opacity: 1))
-            self.bottomWinLabel.runAction(CCActionFadeTo(duration: 0.5, opacity: 1))
-            self.topWinLabel.runAction(CCActionFadeTo(duration: 0.5, opacity: 1))
-            self.topLosingEquation.runAction(CCActionFadeTo(duration: 0.5, opacity: 1))
-            self.bottomLosingEquation.runAction(CCActionFadeTo(duration: 0.5, opacity: 1))
-        }
-        print(currentBottomEquationSolution)
-        print(currentTopEquationSolution)
-    }
-    
-    func again() {
-        let gameplayScene = CCBReader.load("Gameplay") as! Gameplay
-        
-        let scene = CCScene()
-        scene.addChild(gameplayScene)
-        
-        let transition = CCTransition(fadeWithDuration: 0.5)
-        CCDirector.sharedDirector().presentScene(scene, withTransition: transition)
-    }
-    
 }

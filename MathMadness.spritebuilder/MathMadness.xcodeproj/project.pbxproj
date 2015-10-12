@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		556AC3D11BCB34BB000B39F5 /* TileDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 556AC3D01BCB34BB000B39F5 /* TileDelegate.swift */; settings = {ASSET_TAGS = (); }; };
+		556AC3D51BCB34DF000B39F5 /* GridDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 556AC3D41BCB34DF000B39F5 /* GridDelegate.swift */; settings = {ASSET_TAGS = (); }; };
+		556AC3D71BCB356B000B39F5 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 556AC3D61BCB356B000B39F5 /* Enums.swift */; settings = {ASSET_TAGS = (); }; };
 		558B76961BC959D800875EC5 /* Gameplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558B76951BC959D800875EC5 /* Gameplay.swift */; settings = {ASSET_TAGS = (); }; };
 		558B769A1BC9665F00875EC5 /* Tile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558B76991BC9665F00875EC5 /* Tile.swift */; settings = {ASSET_TAGS = (); }; };
 		558B769C1BC966A000875EC5 /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558B769B1BC966A000875EC5 /* Grid.swift */; settings = {ASSET_TAGS = (); }; };
@@ -153,6 +156,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		556AC3D01BCB34BB000B39F5 /* TileDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TileDelegate.swift; path = Source/TileDelegate.swift; sourceTree = "<group>"; };
+		556AC3D41BCB34DF000B39F5 /* GridDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GridDelegate.swift; path = Source/GridDelegate.swift; sourceTree = "<group>"; };
+		556AC3D61BCB356B000B39F5 /* Enums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Enums.swift; path = Source/Enums.swift; sourceTree = "<group>"; };
 		558B76951BC959D800875EC5 /* Gameplay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Gameplay.swift; path = Source/Gameplay.swift; sourceTree = "<group>"; };
 		558B76991BC9665F00875EC5 /* Tile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Tile.swift; path = Source/Tile.swift; sourceTree = "<group>"; };
 		558B769B1BC966A000875EC5 /* Grid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Grid.swift; path = Source/Grid.swift; sourceTree = "<group>"; };
@@ -445,10 +451,13 @@
 			isa = PBXGroup;
 			children = (
 				7A40362019DDEF0D007B6E8F /* Platforms */,
-				7A046D7519E84C36004C4763 /* MainScene.swift */,
-				558B76991BC9665F00875EC5 /* Tile.swift */,
+				556AC3D61BCB356B000B39F5 /* Enums.swift */,
 				558B76951BC959D800875EC5 /* Gameplay.swift */,
 				558B769B1BC966A000875EC5 /* Grid.swift */,
+				556AC3D41BCB34DF000B39F5 /* GridDelegate.swift */,
+				7A046D7519E84C36004C4763 /* MainScene.swift */,
+				558B76991BC9665F00875EC5 /* Tile.swift */,
+				556AC3D01BCB34BB000B39F5 /* TileDelegate.swift */,
 				D352B48019EC608A00829775 /* MetalShaders */,
 			);
 			name = Source;
@@ -831,10 +840,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				B73789871807631A0076A88C /* main.m in Sources */,
+				556AC3D11BCB34BB000B39F5 /* TileDelegate.swift in Sources */,
 				558B76961BC959D800875EC5 /* Gameplay.swift in Sources */,
 				558B769A1BC9665F00875EC5 /* Tile.swift in Sources */,
 				7A046D7919E84ED5004C4763 /* MainScene.swift in Sources */,
 				5B121038197487F2004C1E1D /* AppDelegate.m in Sources */,
+				556AC3D51BCB34DF000B39F5 /* GridDelegate.swift in Sources */,
+				556AC3D71BCB356B000B39F5 /* Enums.swift in Sources */,
 				558B769C1BC966A000875EC5 /* Grid.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
