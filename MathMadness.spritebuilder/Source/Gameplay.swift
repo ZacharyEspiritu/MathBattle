@@ -16,6 +16,7 @@ class Gameplay: CCNode {
     
     weak var grayOut: CCNodeColor!
     weak var playAgain: CCButton!
+    weak var mainMenu: CCButton!
     
     weak var topCountdown, bottomCountdown: CCLabelTTF!
     var countdown: String = "" {
@@ -182,7 +183,8 @@ class Gameplay: CCNode {
             bottomLosingEquation.string = ""
         }
         delay(1) {
-            self.playAgain.position = ccp(0.5, 0.5)
+            self.playAgain.position = ccp(0.5, self.playAgain.position.y)
+            self.mainMenu.position = ccp(0.5, self.playAgain.position.y)
             self.grayOut.runAction(CCActionFadeTo(duration: 0.5, opacity: 0.6))
             self.playAgain.runAction(CCActionFadeTo(duration: 0.5, opacity: 1))
             self.bottomWinLabel.runAction(CCActionFadeTo(duration: 0.5, opacity: 1))
@@ -195,7 +197,18 @@ class Gameplay: CCNode {
     }
     
     func again() {
+        Mixpanel.sharedInstance().track("Round Started")
         let gameplayScene = CCBReader.load("Gameplay") as! Gameplay
+        
+        let scene = CCScene()
+        scene.addChild(gameplayScene)
+        
+        let transition = CCTransition(fadeWithDuration: 0.5)
+        CCDirector.sharedDirector().presentScene(scene, withTransition: transition)
+    }
+    
+    func menu() {
+        let gameplayScene = CCBReader.load("MainScene") as! MainScene
         
         let scene = CCScene()
         scene.addChild(gameplayScene)

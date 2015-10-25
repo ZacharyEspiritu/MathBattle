@@ -23,6 +23,7 @@ class MainScene: CCNode {
     Begins the game.
     */
     func play() {
+        Mixpanel.sharedInstance().track("Round Started")
         let gameplayScene = CCBReader.load("Gameplay") as! Gameplay
         
         let scene = CCScene()
