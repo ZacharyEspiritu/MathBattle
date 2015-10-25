@@ -12,10 +12,16 @@ class MainScene: CCNode {
     
     // MARK: Functions
     
+    /**
+    Called whenever the `MainScene.ccb` is loaded.
+    */
     func didLoadFromCCB() {
         OALSimpleAudio.sharedInstance().playBg("Rhinoceros.mp3", loop: true)
     }
     
+    /**
+    Begins the game.
+    */
     func play() {
         let gameplayScene = CCBReader.load("Gameplay") as! Gameplay
         

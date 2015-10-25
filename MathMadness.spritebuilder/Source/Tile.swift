@@ -23,6 +23,9 @@ class Tile: CCNode {
     
     // MARK: Functions
     
+    /**
+    Called whenever a tile is pressed. Mainly used to call the `TileDelegate` `tileWasPressed()` function, which, in turn, is used to call the `GridDelegate` `pressed()` function.
+    */
     func pressed() {
         delegate?.tileWasPressed(label.string, side: side, tile: self)
         print(label.string)

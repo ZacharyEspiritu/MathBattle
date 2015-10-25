@@ -331,7 +331,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>assets/Rectangle 1 Copy + Rectangle 1.png</string>
+							<string>assets/button.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -367,8 +367,6 @@
 						<array/>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 			<dict>
 				<key>UUID</key>

@@ -325,7 +325,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>assets/Rectangle 1 Copy + Rectangle 1.png</string>
+									<string>assets/button.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -2179,7 +2179,7 @@ left</string>
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>assets/Rectangle 1 Copy + Rectangle 1.png</string>
+									<string>assets/button.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -2627,8 +2627,6 @@ left</string>
 						</array>
 					</dict>
 				</array>
-				<key>seqExpanded</key>
-				<true/>
 			</dict>
 		</array>
 		<key>customClass</key>

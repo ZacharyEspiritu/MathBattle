@@ -9,5 +9,5 @@
 import Foundation
 
 protocol TileDelegate {
-    func tileWasPressed(string: String, side: Side, tile: Tile)
+    func tileWasPressed(string: String, side: Side, tile: Tile) // Called wheneer a tile is pressed. 
 }

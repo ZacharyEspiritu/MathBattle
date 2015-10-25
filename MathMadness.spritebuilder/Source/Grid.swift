@@ -37,6 +37,9 @@ class Grid: CCNode {
     
     // MARK: Functions
     
+    /**
+    Generates a new puzzle. Returns the target number. 
+    */
     func generateNewRound() -> Int {
         var targetNumber: Int = 0
         

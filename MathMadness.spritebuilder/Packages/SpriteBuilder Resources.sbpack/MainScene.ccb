@@ -220,7 +220,7 @@
 				<key>customClass</key>
 				<string></string>
 				<key>displayName</key>
-				<string>piq_5802_400x400</string>
+				<string>professor</string>
 				<key>memberVarAssignmentName</key>
 				<string></string>
 				<key>memberVarAssignmentType</key>
@@ -247,7 +247,7 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>309.08444213867188</real>
+							<real>270.59478759765625</real>
 							<real>233.46278381347656</real>
 							<integer>0</integer>
 							<integer>0</integer>
@@ -286,7 +286,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>assets/piq_5802_400x400.png</string>
+							<string>assets/professor.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -330,7 +330,7 @@
 						<array/>
 					</dict>
 				</array>
-				<key>seqExpanded</key>
+				<key>selected</key>
 				<true/>
 			</dict>
 			<dict>
@@ -447,7 +447,7 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>0.0</real>
+							<real>1</real>
 							<real>1</real>
 							<false/>
 							<integer>0</integer>
@@ -807,8 +807,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>0.49687498807907104</real>
-							<real>685</real>
+							<real>0.5</real>
+							<real>444.46966552734375</real>
 							<integer>0</integer>
 							<integer>2</integer>
 							<integer>0</integer>
@@ -1099,7 +1099,7 @@ Battle</string>
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>0.0</real>
+							<real>1</real>
 							<real>1</real>
 							<false/>
 							<integer>0</integer>
@@ -1112,7 +1112,7 @@ Battle</string>
 						<string>Block</string>
 						<key>value</key>
 						<array>
-							<string></string>
+							<string>options</string>
 							<integer>1</integer>
 						</array>
 					</dict>
@@ -1484,7 +1484,7 @@ Battle</string>
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>0.0</real>
+							<real>1</real>
 							<real>1</real>
 							<false/>
 							<integer>0</integer>
@@ -1497,7 +1497,7 @@ Battle</string>
 						<string>Block</string>
 						<key>value</key>
 						<array>
-							<string></string>
+							<string>about</string>
 							<integer>1</integer>
 						</array>
 					</dict>
@@ -1542,7 +1542,7 @@ Battle</string>
 						<string>String</string>
 						<key>value</key>
 						<array>
-							<string>Magical Secrets</string>
+							<string>ABout the game</string>
 							<false/>
 						</array>
 					</dict>
@@ -1752,8 +1752,6 @@ Battle</string>
 						</array>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 				<key>seqExpanded</key>
 				<true/>
 			</dict>
@@ -1897,7 +1895,7 @@ Battle</string>
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>0.23333333432674408</real>
+			<real>1.2666666507720947</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>
