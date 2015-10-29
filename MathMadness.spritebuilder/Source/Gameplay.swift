@@ -133,7 +133,6 @@ class Gameplay: CCNode {
         }
         
         if winner == .Top {
-            
             topGrid.removeAllTiles()
             topGrid.increaseScore()
             topChosenSet.removeAll()
@@ -149,7 +148,6 @@ class Gameplay: CCNode {
             }
         }
         else if winner == .Bottom {
-            
             bottomGrid.removeAllTiles()
             bottomGrid.increaseScore()
             bottomChosenSet.removeAll()
@@ -192,8 +190,9 @@ class Gameplay: CCNode {
             self.topLosingEquation.runAction(CCActionFadeTo(duration: 0.5, opacity: 1))
             self.bottomLosingEquation.runAction(CCActionFadeTo(duration: 0.5, opacity: 1))
         }
-        print(currentBottomEquationSolution)
-        print(currentTopEquationSolution)
+        print("Current Solutions:")
+        print("  Bottom: \(currentBottomEquationSolution)")
+        print("  Top: \(currentTopEquationSolution)")
     }
     
     func again() {
