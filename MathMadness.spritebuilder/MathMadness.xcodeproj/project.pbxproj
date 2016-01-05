@@ -7,14 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		556AC3D11BCB34BB000B39F5 /* TileDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 556AC3D01BCB34BB000B39F5 /* TileDelegate.swift */; settings = {ASSET_TAGS = (); }; };
-		556AC3D51BCB34DF000B39F5 /* GridDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 556AC3D41BCB34DF000B39F5 /* GridDelegate.swift */; settings = {ASSET_TAGS = (); }; };
-		556AC3D71BCB356B000B39F5 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 556AC3D61BCB356B000B39F5 /* Enums.swift */; settings = {ASSET_TAGS = (); }; };
-		558B76961BC959D800875EC5 /* Gameplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558B76951BC959D800875EC5 /* Gameplay.swift */; settings = {ASSET_TAGS = (); }; };
-		558B769A1BC9665F00875EC5 /* Tile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558B76991BC9665F00875EC5 /* Tile.swift */; settings = {ASSET_TAGS = (); }; };
-		558B769C1BC966A000875EC5 /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558B769B1BC966A000875EC5 /* Grid.swift */; settings = {ASSET_TAGS = (); }; };
-		558B76DA1BC9CBF800875EC5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 558B76D91BC9CBF800875EC5 /* Images.xcassets */; settings = {ASSET_TAGS = (); }; };
-		558B76DC1BC9DD8100875EC5 /* Rhinoceros.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 558B76DB1BC9DD8100875EC5 /* Rhinoceros.mp3 */; settings = {ASSET_TAGS = (); }; };
+		556AC3D11BCB34BB000B39F5 /* TileDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 556AC3D01BCB34BB000B39F5 /* TileDelegate.swift */; };
+		556AC3D51BCB34DF000B39F5 /* GridDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 556AC3D41BCB34DF000B39F5 /* GridDelegate.swift */; };
+		556AC3D71BCB356B000B39F5 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 556AC3D61BCB356B000B39F5 /* Enums.swift */; };
+		558B76961BC959D800875EC5 /* Gameplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558B76951BC959D800875EC5 /* Gameplay.swift */; };
+		558B769A1BC9665F00875EC5 /* Tile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558B76991BC9665F00875EC5 /* Tile.swift */; };
+		558B769C1BC966A000875EC5 /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558B769B1BC966A000875EC5 /* Grid.swift */; };
+		558B76DA1BC9CBF800875EC5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 558B76D91BC9CBF800875EC5 /* Images.xcassets */; };
+		558B76DC1BC9DD8100875EC5 /* Rhinoceros.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 558B76DB1BC9DD8100875EC5 /* Rhinoceros.mp3 */; };
+		55A134231C3B5F3000E1BFF1 /* ELORating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A134221C3B5F3000E1BFF1 /* ELORating.swift */; };
 		5B121030197484FA004C1E1D /* MathMadnessActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B12102F197484FA004C1E1D /* MathMadnessActivity.m */; };
 		5B121038197487F2004C1E1D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B737893E1807617C0076A88C /* AppDelegate.m */; };
 		7A046D7919E84ED5004C4763 /* MainScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A046D7519E84C36004C4763 /* MainScene.swift */; };
@@ -165,6 +166,7 @@
 		558B769B1BC966A000875EC5 /* Grid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Grid.swift; path = Source/Grid.swift; sourceTree = "<group>"; };
 		558B76D91BC9CBF800875EC5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		558B76DB1BC9DD8100875EC5 /* Rhinoceros.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Rhinoceros.mp3; sourceTree = "<group>"; };
+		55A134221C3B5F3000E1BFF1 /* ELORating.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ELORating.swift; path = Source/ELORating.swift; sourceTree = "<group>"; };
 		5B12100919748273004C1E1D /* libEGL.so */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libEGL.so; path = /usr/lib/armv7a/libEGL.so; sourceTree = SDKROOT; };
 		5B12100F197483EE004C1E1D /* ic_launcher.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_launcher.png; sourceTree = "<group>"; };
 		5B121011197483EE004C1E1D /* ic_launcher.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_launcher.png; sourceTree = "<group>"; };
@@ -468,6 +470,7 @@
 				556AC3D61BCB356B000B39F5 /* Enums.swift */,
 				558B76951BC959D800875EC5 /* Gameplay.swift */,
 				558B769B1BC966A000875EC5 /* Grid.swift */,
+				55A134221C3B5F3000E1BFF1 /* ELORating.swift */,
 				556AC3D41BCB34DF000B39F5 /* GridDelegate.swift */,
 				7A046D7519E84C36004C4763 /* MainScene.swift */,
 				558B76991BC9665F00875EC5 /* Tile.swift */,
@@ -889,6 +892,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B73789871807631A0076A88C /* main.m in Sources */,
+				55A134231C3B5F3000E1BFF1 /* ELORating.swift in Sources */,
 				556AC3D11BCB34BB000B39F5 /* TileDelegate.swift in Sources */,
 				558B76961BC959D800875EC5 /* Gameplay.swift in Sources */,
 				558B769A1BC9665F00875EC5 /* Tile.swift in Sources */,
