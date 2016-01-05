@@ -37,21 +37,22 @@ class Grid: CCNode {
     
     // MARK: Functions
     
-    func generate() -> Int {
+    func generateNewRound() -> Int {
         var targetNumber: Int = 0
-        var equationArray: [String] = []
-        var equationString: String = ""
+        var sampleEquationSolution: String = ""
+        var tileStorageArray: [String] = []
         
         let firstNumber = Int(arc4random_uniform(UInt32(difficulty)))
-        equationArray.append("\(firstNumber)")
-        equationString = "\(firstNumber)"
+        targetNumber = firstNumber
+        sampleEquationSolution = "\(firstNumber)"
+        tileStorageArray.append("\(firstNumber)")
         
         for _ in 0..<4 {
-            let nextNumber = Int(arc4random_uniform(UInt32(10)))
-            var nextOperation: Operation!
+            let nextNumber = Int(arc4random_uniform(UInt32(difficulty)))
             
             let rand = CCRANDOM_0_1()
-
+            var nextOperation: Operation!
+            
             if rand < 0.30 {
                 nextOperation = .Multiply
                 targetNumber = targetNumber * nextNumber
@@ -65,15 +66,14 @@ class Grid: CCNode {
                 targetNumber = targetNumber - nextNumber
             }
             
-            equationArray.append("\(nextOperation.rawValue)")
-            equationArray.append("\(nextNumber)")
-            
-            equationString = equationString + "\(nextOperation)" + "\(nextNumber)"
+            tileStorageArray.append("\(nextOperation.rawValue)")
+            tileStorageArray.append("\(nextNumber)")
+            sampleEquationSolution = sampleEquationSolution + "\(nextOperation.rawValue)\(nextNumber)"
         }
         
-        equationString = equationString + " = \(targetNumber)"
-        
-        delegate?.saveStringEquationSolution(equationString, side: side)
+        sampleEquationSolution = sampleEquationSolution + " = \(targetNumber)"
+        print(sampleEquationSolution)
+        delegate?.saveStringEquationSolution(sampleEquationSolution, side: side)
         
         for index in 0..<9 {
             let newTile: Tile = CCBReader.load("Tile") as! Tile
@@ -84,11 +84,11 @@ class Grid: CCNode {
             newTile.delegate = self
             newTile.side = side
             
-            let stringIndex = Int(arc4random_uniform(UInt32(equationArray.count)))
+            let stringIndex = Int(arc4random_uniform(UInt32(tileStorageArray.count)))
             
-            newTile.label.string = equationArray[stringIndex]
+            newTile.label.string = tileStorageArray[stringIndex]
             
-            switch equationArray[stringIndex] {
+            switch tileStorageArray[stringIndex] {
             case "0":
                 newTile.value = .zero
             case "1":
@@ -118,168 +118,7 @@ class Grid: CCNode {
             default:
                 break
             }
-            equationArray.removeAtIndex(stringIndex)
-            
-            switch index {
-            case 0:
-                c4.addChild(newTile)
-            case 1:
-                a2.addChild(newTile)
-            case 2:
-                a3.addChild(newTile)
-            case 3:
-                a4.addChild(newTile)
-            case 4:
-                c3.addChild(newTile)
-            case 5:
-                b2.addChild(newTile)
-            case 6:
-                b3.addChild(newTile)
-            case 7:
-                b4.addChild(newTile)
-            case 8:
-                c2.addChild(newTile)
-            default:
-                print("test")
-            }
-            
-            newTile.scale = 0
-            newTile.runAction(CCActionScaleTo(duration: 0.25, scale: 1))
-        }
-        
-        return targetNumber
-    }
-    
-    /**
-    Generates a new puzzle. Returns the target number. 
-    */
-    func generateNewRound() -> Int {
-        var targetNumber: Int = 0
-        
-        let firstNumber = Int(arc4random_uniform(UInt32(difficulty)))
-        let secondNumber = Int(arc4random_uniform(UInt32(difficulty)))
-        
-        let rand = CCRANDOM_0_1()
-        var firstOperation: Operation!
-        if rand < 0.30 {
-            firstOperation = .Multiply
-            targetNumber = firstNumber * secondNumber
-        }
-        else if rand < 0.65 {
-            firstOperation = .Add
-            targetNumber = firstNumber + secondNumber
-        }
-        else {
-            firstOperation = .Subtract
-            targetNumber = firstNumber - secondNumber
-        }
-        
-        let thirdNumber = Int(arc4random_uniform(UInt32(10)))
-        let rand2 = CCRANDOM_0_1()
-        var secondOperation: Operation!
-        if rand2 < 0.30 {
-            secondOperation = .Multiply
-            targetNumber = targetNumber * thirdNumber
-        }
-        else if rand2 < 0.65 {
-            secondOperation = .Add
-            targetNumber = targetNumber + thirdNumber
-        }
-        else {
-            secondOperation = .Subtract
-            targetNumber = targetNumber - thirdNumber
-        }
-        
-        let fourthNumber = Int(arc4random_uniform(UInt32(10)))
-        let rand3 = CCRANDOM_0_1()
-        var thirdOperation: Operation!
-        if rand3 < 0.30 {
-            thirdOperation = .Multiply
-            targetNumber = targetNumber * fourthNumber
-        }
-        else if rand3 < 0.65 {
-            thirdOperation = .Add
-            targetNumber = targetNumber + fourthNumber
-        }
-        else {
-            thirdOperation = .Subtract
-            targetNumber = targetNumber - fourthNumber
-        }
-        
-        let fifthNumber = Int(arc4random_uniform(UInt32(10)))
-        let rand4 = CCRANDOM_0_1()
-        var fourthOperation: Operation!
-        if rand4 < 0.30 {
-            fourthOperation = .Multiply
-            targetNumber = targetNumber * fifthNumber
-        }
-        else if rand4 < 0.65 {
-            fourthOperation = .Add
-            targetNumber = targetNumber + fifthNumber
-        }
-        else {
-            fourthOperation = .Subtract
-            targetNumber = targetNumber - fifthNumber
-        }
-        
-        print("\(firstNumber)\(firstOperation.rawValue)\(secondNumber)\(secondOperation.rawValue)\(thirdNumber)\(thirdOperation.rawValue)\(fourthNumber)\(fourthOperation.rawValue)\(fifthNumber) = \(targetNumber)")
-        delegate?.saveStringEquationSolution("(((\(firstNumber)\(firstOperation.rawValue)\(secondNumber))\(secondOperation.rawValue)\(thirdNumber))\(thirdOperation.rawValue)\(fourthNumber))\(fourthOperation.rawValue)\(fifthNumber) = \(targetNumber)", side: side)
-        
-        var array: [String] = []
-        array.append("\(firstNumber)")
-        array.append("\(firstOperation.rawValue)")
-        array.append("\(secondNumber)")
-        array.append("\(secondOperation.rawValue)")
-        array.append("\(thirdNumber)")
-        array.append("\(thirdOperation.rawValue)")
-        array.append("\(fourthNumber)")
-        array.append("\(fourthOperation.rawValue)")
-        array.append("\(fifthNumber)")
-        
-        for index in 0..<9 {
-            let newTile: Tile = CCBReader.load("Tile") as! Tile
-            
-            tiles.append(newTile)
-            newTile.position = ccp(0, 0)
-            
-            newTile.delegate = self
-            newTile.side = side
-            
-            let stringIndex = Int(arc4random_uniform(UInt32(array.count)))
-            
-            newTile.label.string = array[stringIndex]
-            
-            switch array[stringIndex] {
-            case "0":
-                newTile.value = .zero
-            case "1":
-                newTile.value = .one
-            case "2":
-                newTile.value = .two
-            case "3":
-                newTile.value = .three
-            case "4":
-                newTile.value = .four
-            case "5":
-                newTile.value = .five
-            case "6":
-                newTile.value = .six
-            case "7":
-                newTile.value = .seven
-            case "8":
-                newTile.value = .eight
-            case "9":
-                newTile.value = .nine
-            case " + ":
-                newTile.value = .add
-            case " – ":
-                newTile.value = .subtract
-            case " × ":
-                newTile.value = .multiply
-            default:
-                break
-            }
-            array.removeAtIndex(stringIndex)
+            tileStorageArray.removeAtIndex(stringIndex)
             
             switch index {
             case 0:
